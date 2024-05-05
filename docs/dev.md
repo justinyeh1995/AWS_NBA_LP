@@ -1,40 +1,47 @@
-the following components:
+## Architectures:
 
-1. Lambda functions for data fetching:
+### 1. Lambda functions for data fetching:
 
 - Create one or more Lambda functions responsible for fetching data from the NBA API and updating your database.
 - These functions will be triggered periodically by CloudWatch Events to keep your database up to date with the latest data from the NBA API.
 - Implement the logic to make HTTP requests to the NBA API, parse the response, and update your database accordingly.
 
-2. Lambda functions for user-facing API:
+### 2. Lambda functions for user-facing API:
 
-Create separate Lambda functions to handle user requests and serve the data from your database.
-These functions will be triggered by API Gateway when users make requests to your application's endpoints.
-Implement the necessary logic to retrieve data from your database based on user requests and return the appropriate responses.
+- Create separate Lambda functions to handle user requests and serve the data from your database.
+- These functions will be triggered by API Gateway when users make requests to your application's endpoints.
+- Implement the necessary logic to retrieve data from your database based on user requests and return the appropriate responses.
 
-3. API Gateway:
+### 3. API Gateway:
 
-Set up an API in AWS API Gateway to expose your user-facing Lambda functions as RESTful endpoints.
-Define the necessary routes, HTTP methods, and request/response mappings for your API.
-Configure the integration between API Gateway and your user-facing Lambda functions.
+- Set up an API in AWS API Gateway to expose your user-facing Lambda functions as RESTful endpoints.
+- Define the necessary routes, HTTP methods, and request/response mappings for your API.
+- Configure the integration between API Gateway and your user-facing Lambda functions.
 
-4. RDS (Relational Database Service):
+### 4. RDS (Relational Database Service):
 
-Use Amazon RDS to set up and manage your database instance.
-Choose the appropriate database engine (e.g., PostgreSQL, MySQL) based on your requirements.
-Configure the database credentials, security groups, and other settings to ensure secure access from your Lambda functions.
+- Use Amazon RDS to set up and manage your database instance.
+- Choose the appropriate database engine (e.g., PostgreSQL, MySQL) based on your requirements.
+- Configure the database credentials, security groups, and other settings to ensure secure access from your Lambda functions.
 
-5. CloudWatch Events:
+### 5. CloudWatch Events:
 
-Configure CloudWatch Events to periodically trigger your data fetching Lambda functions.
-Define the schedule using cron expressions or rate expressions to determine how often the data should be fetched and updated.
+- Configure CloudWatch Events to periodically trigger your data fetching Lambda functions.
+- Define the schedule using cron expressions or rate expressions to determine how often the data should be fetched and updated.
 
-6. Frontend:
+### 6. Frontend:
 
-6-1. Amplify (optional):
+#### 6-1. Amplify (optional):
 
-If you have a frontend application that interacts with your serverless backend, you can use AWS Amplify to simplify the deployment and management of your frontend.
-Amplify provides features like hosting, authentication, and API integration, making it easier to build and deploy full-stack serverless applications.
+- If you have a frontend application that interacts with your serverless backend, you can use AWS Amplify to simplify the deployment and management of your frontend.
+- Amplify provides features like hosting, authentication, and API integration, making it easier to build and deploy full-stack serverless applications.
+
+#### 6-2. EC2 and Route 53 (alternative to Amplify):
+
+If you prefer to host your frontend application on an EC2 instance instead of using Amplify, you can set up an EC2 instance and configure it to serve your frontend files.
+Use Amazon Route 53 to manage the DNS routing for your application, directing traffic to your EC2 instance or API Gateway endpoints as needed.
+
+---
 
        +-----------------+
        |   NBA API       |
